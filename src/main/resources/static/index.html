@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Città</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        /* Stili personalizzati per il font Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Temperature delle Ultime Due Settimane</h1>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <label for="city-select" class="text-lg font-medium text-gray-700 sr-only">Seleziona una città:</label>
+            <select id="city-select" aria-label="Seleziona una città" class="p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-800 w-full sm:w-auto">
+                <!-- Le opzioni verranno popolate da JavaScript -->
+            </select>
+            <button id="fetch-button" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                Mostra Grafico
+            </button>
+        </div>
+
+        <div id="chart-container" class="relative bg-gray-50 p-4 rounded-lg shadow-inner border border-gray-200 min-h-[300px] flex items-center justify-center">
+            <canvas id="temperature-chart"></canvas>
+            <div id="message-box" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center text-gray-700 text-lg font-medium rounded-lg p-4 text-center">
+                Seleziona una città e clicca "Mostra Grafico" per visualizzare i dati.
+            </div>
+            <div id="loading-spinner" class="hidden absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center rounded-lg">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-4 border-blue-500 border-opacity-25"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-blue-600 font-semibold text-sm">Caricamento...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Il tuo script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
